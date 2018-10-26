@@ -12,9 +12,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.codetoart'
+group='com.github.khemlabs'
 project.archivesBaseName = rootProject.name
-version = "1.0.3-5"
+version = "1.0.3-6"
 
 android {
     flavorDimensions "testapp"
@@ -64,7 +64,7 @@ dependencies {
         devTestappImplementation project(':r2-shared')
         devTestappWithLcpImplementation project(':r2-shared')
     }
-    devFolioReaderImplementation 'com.github.codetoart:r2-shared-kotlin:1.0.3-2'
+    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:1.0.3-4'
 
     //TODO conflicting support libraries, excluding these
     implementation('com.mcxiaoke.koi:core:0.5.5') {
