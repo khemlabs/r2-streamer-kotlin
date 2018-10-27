@@ -57,14 +57,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'com.jakewharton.timber:timber:4.7.1'
-
     intTestappImplementation 'com.github.readium:r2-shared-kotlin:develop-SNAPSHOT'
     intTestappWithLcpImplementation 'com.github.readium:r2-shared-kotlin:develop-SNAPSHOT'
     if (findProject(':r2-shared')) {
         devTestappImplementation project(':r2-shared')
         devTestappWithLcpImplementation project(':r2-shared')
     }
-    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:1.0.3-4'
+    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:cdf7e78'
 
     //TODO conflicting support libraries, excluding these
     implementation('com.mcxiaoke.koi:core:0.5.5') {
@@ -75,23 +74,19 @@ dependencies {
         exclude module: 'support-v4'
     }
     implementation "com.android.support:appcompat-v7:$support_version"
-
     // Intend to fetch repo from jitpack.io for stable releases
     implementation 'com.github.NanoHttpd.nanohttpd:nanohttpd:fd80618e93d'
     implementation 'com.github.NanoHttpd.nanohttpd:nanohttpd-nanolets:fd80618e93d'
-
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'commons-io:commons-io:2.4'
     implementation 'org.zeroturnaround:zt-zip:1.12'
     implementation 'joda-time:joda-time:2.9.9'
     implementation 'nl.komponents.kovenant:kovenant:3.3.0'
-
     final JACKSON_VERSION = '2.8.6'
     implementation "com.fasterxml.jackson.core:jackson-core:$JACKSON_VERSION"
     implementation "com.fasterxml.jackson.core:jackson-annotations:$JACKSON_VERSION"
     implementation "com.fasterxml.jackson.core:jackson-databind:$JACKSON_VERSION"
     implementation 'org.jsoup:jsoup:1.10.2'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
