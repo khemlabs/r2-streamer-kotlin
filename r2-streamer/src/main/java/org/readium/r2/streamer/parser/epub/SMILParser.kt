@@ -14,6 +14,6 @@ import org.readium.r2.shared.parser.xml.Node
 class SMILParser {
 
     fun parseAudio(audio: Node, href: String) : String {
-        return audio.attributes["src"]+"#t="+audio.get("clipBegin")+","+audio.get("clipEnd");
+        return audio.attributes["src"]+"#t="+audio.attributes["clipBegin"]+","+audio.attributes["clipEnd"];
     }
 }
