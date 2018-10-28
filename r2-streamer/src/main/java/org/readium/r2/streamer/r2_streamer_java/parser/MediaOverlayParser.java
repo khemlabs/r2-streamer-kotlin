@@ -179,7 +179,8 @@ public class MediaOverlayParser {
 		publication.getSpine().get(position).getProperties().getContains().add("media-overlay?resource=" + link.getHref());
 		// Add new link
 		Link newLink = new Link();
-		newLink.setHref("8080/media-overlay?resource=" + link.getHref());
+		newLink.setTitle(link.getTitle()+"-media-overlay");
+		newLink.setHref("media-overlay?resource=" + link.getHref());
 		newLink.getRel().add("media-overlay");
 		newLink.setTypeLink("application/vnd.readium.mo+json");
 		publication.getLinks().add(newLink);
