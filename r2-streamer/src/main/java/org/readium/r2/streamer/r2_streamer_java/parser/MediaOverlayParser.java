@@ -40,7 +40,7 @@ public class MediaOverlayParser {
 				if (document == null)
 					throw new Exception("Error while parsing file " + link.getHref());
 
-				Node body = document.getFirst("body");
+				Node body = document.root().getFirst("body");
 
 				MediaOverlayNode node = new MediaOverlayNode();
 				node.getRole().add("section");
