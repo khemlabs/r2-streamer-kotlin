@@ -28,7 +28,7 @@ public class MediaOverlayParser {
 	 */
 	public static void parseMediaOverlay(Publication publication, ContainerEpub container)
 			throws Exception {
-		for (Link link : publication.getLinks()) {
+		for (Link link : publication.getResources()) {
 			if (link.getTypeLink().equalsIgnoreCase("application/smil+xml")) {
 				InputStream is = container.dataInputStream(link.getHref());
 				if (is == null)
