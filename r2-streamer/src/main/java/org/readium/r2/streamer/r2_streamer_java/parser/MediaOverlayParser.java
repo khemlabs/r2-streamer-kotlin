@@ -30,7 +30,7 @@ public class MediaOverlayParser {
 			throws Exception {
 		for (Link link : publication.getResources()) {
 			if (link.getTypeLink().equalsIgnoreCase("application/smil+xml")) {
-				InputStream is = container.dataInputStream(link.getHref());
+				InputStream is = container.dataInputStream(link.getHref().substring(1));
 				if (is == null)
 					return; // maybe file is invalid
 
