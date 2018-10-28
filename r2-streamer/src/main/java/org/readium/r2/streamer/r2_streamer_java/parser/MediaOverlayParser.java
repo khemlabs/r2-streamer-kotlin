@@ -27,8 +27,7 @@ public class MediaOverlayParser {
 	 * @param container   contains implementation for getting raw data from file
 	 * @throws Exception if file is invalid for not found
 	 */
-	public static void parseMediaOverlay(Publication publication, ContainerEpub container)
-			throws Exception {
+	public static void parseMediaOverlay(Publication publication, ContainerEpub container) throws Exception {
 		for (Link link : publication.getResources()) {
 			if (link.getTypeLink().equalsIgnoreCase("application/smil+xml")) {
 				InputStream is = container.dataInputStream(link.getHref().substring(1));
@@ -94,19 +93,19 @@ public class MediaOverlayParser {
 		}
 
 		body.getChildren().forEach(element -> {
-			if(element.getName() == "seq"){
+			if (element.getName() == "seq") {
 				MediaOverlayNode mediaOverlayNode = new MediaOverlayNode();
 
-				if(element.getAttributes().keySet().contains("epub:textref"))
+				if (element.getAttributes().keySet().contains("epub:textref"))
 					mediaOverlayNode.getRole().add("section");
 
-				//child <par> elements in seq
+				// child <par> elements in seq
 				parseParameters(element, mediaOverlayNode, href);
 				node.getChildren().add(mediaOverlayNode);
 				// recur to parse child node elements
 				parseSequences(element, mediaOverlayNode, publication, href);
 
-				if(node.getText() == null)
+				if (node.getText() == null)
 					return;
 
 				// Not clear about the IRI reference, epub:textref in seq may not have [ "#"
@@ -152,10 +151,11 @@ public class MediaOverlayParser {
 			MediaOverlayNode mediaOverlayNode = new MediaOverlayNode();
 			Node text = element.getFirst("text");
 			Node audio = element.getFirst("audio");
-			if(text != null)
+			if (text != null)
 				mediaOverlayNode.setText(text.getAttributes().get("src"));
-			if(audio != null);
-			 mediaOverlayNode.setAudio(smilParser.parseAudio(audio, href));
+			if (audio != null)
+				;
+			mediaOverlayNode.setAudio(smilParser.parseAudio(audio, href));
 			node.getChildren().add(mediaOverlayNode);
 		});
 
@@ -171,7 +171,7 @@ public class MediaOverlayParser {
 	private static void addMediaOverlayToSpine(Publication publication, MediaOverlayNode node, int position) {
 		Link link = publication.getSpine().get(position);
 		// Check if node has mediaOverlay
-		if(publication.getSpine().get(position).getMediaOverlays() == null)
+		if (publication.getSpine().get(position).getMediaOverlays() == null)
 			publication.getSpine().get(position).setMediaOverlays(new MediaOverlays());
 		// Add new node to MediaOverlay
 		publication.getSpine().get(position).getMediaOverlays().getMediaOverlaysNodes().add(node);
@@ -179,8 +179,8 @@ public class MediaOverlayParser {
 		publication.getSpine().get(position).getProperties().getContains().add("media-overlay?resource=" + link.getHref());
 		// Add new link
 		Link newLink = new Link();
-		newLink.setTitle(link.getTitle()+"-media-overlay");
-		newLink.setHref("media-overlay?resource=" + link.getHref());
+		newLink.setTitle(link.getTitle() + "-media-overlay");
+		newLink.setHref("port/media-overlay?resource=" + link.getHref());
 		newLink.getRel().add("media-overlay");
 		newLink.setTypeLink("application/vnd.readium.mo+json");
 		publication.getLinks().add(newLink);
