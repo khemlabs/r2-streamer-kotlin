@@ -25,6 +25,8 @@ import org.readium.r2.streamer.parser.epub.OPFParser
 import org.zeroturnaround.zip.ZipUtil
 import java.io.File
 
+import org.readium.r2.streamer.r2_streamer_java.parser.MediaOverlayParser;
+
 // Some constants useful to parse an Epub document
 const val defaultEpubVersion = 1.2
 const val containerDotXmlPath = "META-INF/container.xml"
@@ -61,7 +63,7 @@ class EpubParser : PublicationParser {
         container.drm = drm
 
         fillEncryptionProfile(publication, drm)
-//            parseMediaOverlay(fetcher, publication)
+        MediaOverlayParser.parseMediaOverlay(publication, container as ContainerEpub)
         parseNavigationDocument(container as EpubContainer, publication)
         parseNcxDocument(container, publication)
 
@@ -107,6 +109,7 @@ class EpubParser : PublicationParser {
 //        val fetcher = Fetcher(publication, container)
         parseNavigationDocument(container, publication)
         parseNcxDocument(container, publication)
+        parseRemainingResource(container, publication, drm)
 
         container.drm = drm
         return PubBox(publication, container)
