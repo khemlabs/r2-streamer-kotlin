@@ -1,5 +1,6 @@
 package org.readium.r2.streamer.r2_streamer_java.parser;
 
+import org.readium.r2.shared.MediaOverlays;
 import org.readium.r2.shared.parser.xml.XmlParser;
 import org.readium.r2.streamer.container.ContainerEpub;
 import org.readium.r2.shared.Publication;
@@ -169,6 +170,9 @@ public class MediaOverlayParser {
 	 */
 	private static void addMediaOverlayToSpine(Publication publication, MediaOverlayNode node, int position) {
 		Link link = publication.getSpine().get(position);
+		// Check if node has mediaOverlay
+		if(publication.getSpine().get(position).getMediaOverlays() == null)
+			publication.getSpine().get(position).setMediaOverlays(new MediaOverlays());
 		// Add new node to MediaOverlay
 		publication.getSpine().get(position).getMediaOverlays().getMediaOverlaysNodes().add(node);
 		// Add new properties
