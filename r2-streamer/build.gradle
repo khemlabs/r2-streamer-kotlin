@@ -19,7 +19,7 @@ version = "1.0.3-6"
 android {
     flavorDimensions "testapp"
 
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         minSdkVersion 24
         targetSdkVersion 27
@@ -67,7 +67,7 @@ dependencies {
         devTestappImplementation project(':r2-shared')
         devTestappWithLcpImplementation project(':r2-shared')
     }
-    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:4fec8ed'
+    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:f466861'
     //TODO conflicting support libraries, excluding these
     implementation('com.mcxiaoke.koi:core:0.5.5') {
         exclude module: 'support-v4'
