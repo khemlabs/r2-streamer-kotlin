@@ -154,8 +154,7 @@ public class MediaOverlayParser {
 			if (text != null)
 				mediaOverlayNode.setText(text.getAttributes().get("src"));
 			if (audio != null)
-				;
-			mediaOverlayNode.setAudio(smilParser.parseAudio(audio, href));
+				mediaOverlayNode.setAudio(smilParser.parseAudio(audio, href));
 			node.getChildren().add(mediaOverlayNode);
 		});
 
@@ -179,7 +178,7 @@ public class MediaOverlayParser {
 		publication.getSpine().get(position).getProperties().getContains().add("media-overlay?resource=" + link.getHref());
 		// Add new link
 		Link newLink = new Link();
-		newLink.setTitle(link.getTitle() + "-media-overlay");
+		newLink.setTitle(node.getText());
 		newLink.setHref("port/media-overlay?resource=" + link.getHref());
 		newLink.getRel().add("media-overlay");
 		newLink.setTypeLink("application/vnd.readium.mo+json");
