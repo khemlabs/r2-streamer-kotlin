@@ -8,8 +8,6 @@ import org.readium.r2.shared.MediaOverlayNode;
 import org.readium.r2.shared.Link;
 import org.readium.r2.shared.parser.xml.Node;
 
-import org.readium.r2.streamer.parser.epub.SMILParser;
-
 import java.io.InputStream;
 import java.util.List;
 
@@ -145,7 +143,6 @@ public class MediaOverlayParser {
 		if (par.size() == 0) {
 			return;
 		}
-		SMILParser smilParser = new SMILParser();
 		// For each <par> in the current scope.
 		par.forEach(element -> {
 			MediaOverlayNode mediaOverlayNode = new MediaOverlayNode();
@@ -154,7 +151,7 @@ public class MediaOverlayParser {
 			if (text != null)
 				mediaOverlayNode.setText(text.getAttributes().get("src"));
 			if (audio != null)
-				mediaOverlayNode.setAudio(smilParser.parseAudio(audio, href));
+				mediaOverlayNode.setAudio(SMILParser.parseAudio(audio, href));
 			node.getChildren().add(mediaOverlayNode);
 		});
 
