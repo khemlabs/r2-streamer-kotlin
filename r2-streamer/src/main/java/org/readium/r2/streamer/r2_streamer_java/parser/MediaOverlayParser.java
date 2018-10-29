@@ -182,6 +182,7 @@ public class MediaOverlayParser {
 		newLink.setHref("port/media-overlay?resource=" + link.getHref());
 		newLink.getRel().add("media-overlay");
 		newLink.setTypeLink("application/vnd.readium.mo+json");
+		newLink.setTemplated(true);
 		publication.getOtherLinks().add(newLink);
 	}
 
