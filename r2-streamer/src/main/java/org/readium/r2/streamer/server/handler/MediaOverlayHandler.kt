@@ -41,7 +41,7 @@ class MediaOverlayHandler : RouterNanoHTTPD.DefaultHandler() {
 
         return if (session!!.parameters.containsKey("resource")) {
             val searchQueryPath = session.parameters["resource"]!![0]
-            val spines = fetcher.publication.resources
+            val spines = fetcher.publication.spine
             val objectMapper = ObjectMapper()
             return try {
                 val json = objectMapper.writeValueAsString(getMediaOverlay(spines, searchQueryPath))
