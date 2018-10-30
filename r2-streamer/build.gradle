@@ -67,7 +67,7 @@ dependencies {
         devTestappImplementation project(':r2-shared')
         devTestappWithLcpImplementation project(':r2-shared')
     }
-    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:b4a5736'
+    devFolioReaderImplementation 'com.github.khemlabs:r2-shared-kotlin:1f4c896'
     //TODO conflicting support libraries, excluding these
     implementation('com.mcxiaoke.koi:core:0.5.5') {
         exclude module: 'support-v4'
